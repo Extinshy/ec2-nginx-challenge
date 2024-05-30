@@ -15,6 +15,3 @@ variable "vpc_range" {
 variable "instance_type" {
   default = "t2.micro"
 }
-variable "ghtoken" {
-  default = "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"
-}
