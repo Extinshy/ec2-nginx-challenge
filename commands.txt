@@ -1,0 +1,10 @@
+Key-gen:
+ssh-keygen -C "<your-email>" -f ssh_key_bastion
+ssh-keygen -C "<your-email>" -f ssh_key_ec2
+
+Key-move:
+scp -i ./ssh_key_bastion ./ssh_key_ec2 ubuntu@$(terraform output -raw bastion_ip):.
+
+Connection:
+ssh ubuntu@$(terraform output -raw bastion_ip) -i ssh_key_bastion
+ssh ubuntu@<ec2-privateIP> -i ssh_key_ec2
